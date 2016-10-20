@@ -5,10 +5,12 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -55,10 +57,6 @@ public class OffersController {
 		
 		// If the form has errors on it
 		if(result.hasErrors()){
-			List<ObjectError> errors = result.getAllErrors();
-			for(ObjectError error : errors){
-				System.out.println(error.getDefaultMessage());
-			}
 			model.addAttribute("offer", offer);
 			return "createoffer";
 		}
@@ -69,5 +67,14 @@ public class OffersController {
 			offersService.create(offer);
 			return "docreate";
 		}
+	}
+	
+	/* ===========================
+	 * Database exception handling	
+	 ========================== */
+	@ExceptionHandler(DataAccessException.class)
+	public String dbExceptionHandler(DataAccessException exception){
+		
+		return "error";
 	}
 }
