@@ -32,7 +32,8 @@ public class OffersController {
 	}
 	
 	@RequestMapping(value = "/createoffer")
-	public String home(){
+	public String createOffer(Model model){
+		model.addAttribute("offer", new Offer());
 		return "createoffer";
 	}
 	
@@ -40,9 +41,12 @@ public class OffersController {
 	public String doCreate(Model model, @Valid Offer offer, BindingResult result){
 		if(result.hasErrors()){
 			List<ObjectError> errors = result.getAllErrors();
+			for(ObjectError error : errors){
+				System.out.println(error.getDefaultMessage());
+			}
+			model.addAttribute("offer", offer);
 			return "createoffer";
 		} else {
-			model.addAttribute("offer", offer);
 			return "docreate";
 		}
 	}

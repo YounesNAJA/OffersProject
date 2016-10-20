@@ -16,3 +16,11 @@ table {
 input[type="submit"] {
 	margin-left: 46px;
 }
+
+.error {
+	color: #ff0000;
+	font-style: italic;
+	font-size: small;
+	margin-left: 10px;
+	
+}

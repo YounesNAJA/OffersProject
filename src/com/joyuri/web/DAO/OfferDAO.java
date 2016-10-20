@@ -53,8 +53,8 @@ public class OfferDAO {
 				
 				offer.setId(rs.getInt("id"));
 				offer.setName(rs.getString("name"));
-				offer.setName(rs.getString("email"));
-				offer.setName(rs.getString("text"));
+				offer.setEmail(rs.getString("email"));
+				offer.setText(rs.getString("text"));
 				
 				return offer;
 			}
