@@ -24,21 +24,36 @@ public class OffersController {
 		this.offersService = offersService;
 	}
 
+	/* ============================================
+	 * Showing all offers available in the database
+	 =========================================== */
 	@RequestMapping("/offers")
 	public String home(Model model){
-		List<Offer> offers = offersService.getCurrent();
+		
+		// Getting all the offers from the service layer
+		List<Offer> offers = offersService.getCurrents();
+		
+		// Setting the model with a list of all offers
 		model.addAttribute("offers", offers);
 		return "offers";
 	}
 	
+	/* =======================
+	 * Create a new offer form	
+	 ====================== */
 	@RequestMapping(value = "/createoffer")
 	public String createOffer(Model model){
 		model.addAttribute("offer", new Offer());
 		return "createoffer";
 	}
 	
+	/* ===================================
+	 * After submitting a new offer's form
+	 ================================== */
 	@RequestMapping(value = "/docreate", method = RequestMethod.POST)
 	public String doCreate(Model model, @Valid Offer offer, BindingResult result){
+		
+		// If the form has errors on it
 		if(result.hasErrors()){
 			List<ObjectError> errors = result.getAllErrors();
 			for(ObjectError error : errors){
@@ -46,7 +61,12 @@ public class OffersController {
 			}
 			model.addAttribute("offer", offer);
 			return "createoffer";
-		} else {
+		}
+		
+		// If the form is validated
+		else {
+			// Adding the offer to the Database
+			offersService.create(offer);
 			return "docreate";
 		}
 	}

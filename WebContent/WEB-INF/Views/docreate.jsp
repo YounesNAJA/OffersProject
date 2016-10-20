@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Offer created</title>
 </head>
 <body>
-	<p>${offer}</p>
+	<p>Offer created. <a href="${pageContext.request.contextPath}/offers">Click here to see all offers.</a></p>
 </body>
 </html>

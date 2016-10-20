@@ -17,7 +17,17 @@ public class OffersService {
 		this.offersDao = offersDao;
 	}
 
-	public List<Offer> getCurrent() {
+	/* ============================================================
+	 * Getting All offers available in the database using DAO layer
+	============================================================ */
+	public List<Offer> getCurrents() {
 		return offersDao.getOffers();
+	}
+	
+	/* ====================
+	 * Creating a new offer
+	==================== */
+	public boolean create(Offer offer) {
+		return offersDao.create(offer);
 	}
 }
