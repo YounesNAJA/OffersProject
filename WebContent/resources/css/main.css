@@ -1,0 +1,18 @@
+@CHARSET "ISO-8859-1";
+
+table {
+	padding: 20px;
+	border: 1px solid grey;
+}
+
+.label {
+	text-align: right;
+}
+
+.inputs {
+	width: 300px;
+}
+
+input[type="submit"] {
+	margin-left: 46px;
+}
