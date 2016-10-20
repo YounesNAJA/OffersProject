@@ -68,13 +68,4 @@ public class OffersController {
 			return "docreate";
 		}
 	}
-	
-	/* ===========================
-	 * Database exception handling	
-	 ========================== */
-	@ExceptionHandler(DataAccessException.class)
-	public String dbExceptionHandler(DataAccessException exception){
-		
-		return "error";
-	}
 }
