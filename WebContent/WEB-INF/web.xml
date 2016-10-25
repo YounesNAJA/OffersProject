@@ -33,15 +33,16 @@
     <param-value>
 		classpath:com/joyuri/web/Config/dao-config.xml
 		classpath:com/joyuri/web/Config/service-context.xml
+		classpath:com/joyuri/web/Config/security-context.xml
 		</param-value>
   </context-param>
   <filter>
-    <display-name>TestFilter</display-name>
-    <filter-name>TestFilter</filter-name>
-    <filter-class>com.joyuri.web.Filters.TestFilter</filter-class>
+    <display-name>springSecurityFilterChain</display-name>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
   </filter>
   <filter-mapping>
-    <filter-name>TestFilter</filter-name>
+    <filter-name>springSecurityFilterChain</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 </web-app>

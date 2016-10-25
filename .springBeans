@@ -10,6 +10,7 @@
 		<config>WebContent/WEB-INF/offers-servlet.xml</config>
 		<config>src/com/joyuri/web/Config/dao-config.xml</config>
 		<config>src/com/joyuri/web/Config/service-context.xml</config>
+		<config>src/com/joyuri/web/Config/security-context.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
