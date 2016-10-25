@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -10,8 +11,11 @@
 </head>
 <body onload='document.f.username.focus();'>
 	<h3>Login with Username and Password</h3>
-	<form name='f'
-		action='${pageContext.request.contextPath}/login'
+	<c:if test="${param.error != null }">
+		<p class="error">Username or password is incorrect.</p>
+	</c:if>
+
+	<form name='f' action='${pageContext.request.contextPath}/login'
 		method='POST'>
 		<table>
 			<tr>
