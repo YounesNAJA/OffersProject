@@ -47,7 +47,7 @@ public class LoginController {
 		// If the form has errors on it
 		if(result.hasErrors()){
 			model.addAttribute("user", user);
-			return "createuser";
+			return "newuser";
 		}
 		
 		// If the form is validated
