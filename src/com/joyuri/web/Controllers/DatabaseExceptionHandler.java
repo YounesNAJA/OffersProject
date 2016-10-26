@@ -13,7 +13,7 @@ public class DatabaseExceptionHandler {
 	 */
 	@ExceptionHandler(DataAccessException.class)
 	public String dbExceptionHandler(DataAccessException exception) {
-
+		exception.printStackTrace();
 		return "error";
 	}
 }

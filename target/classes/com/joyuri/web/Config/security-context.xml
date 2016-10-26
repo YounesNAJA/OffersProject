@@ -22,6 +22,12 @@
 	</security:authentication-manager>
 
 	<security:http use-expressions="true">
+		<security:intercept-url pattern="/newuser"
+			access="permitAll" />
+		<security:intercept-url pattern="/createuser"
+			access="permitAll" />
+		<security:intercept-url pattern="/usercreated"
+			access="permitAll" />
 		<security:intercept-url pattern="/static/**"
 			access="permitAll" />
 		<security:intercept-url pattern="/login"
