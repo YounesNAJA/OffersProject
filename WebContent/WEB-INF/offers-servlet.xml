@@ -17,4 +17,10 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	<mvc:resources location="/resources/" mapping="/static/**"></mvc:resources>
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+	<property name="basename"
+		value="com.joyuri.web.Messages.messages">
+	</property>
+	</bean>
 </beans>
