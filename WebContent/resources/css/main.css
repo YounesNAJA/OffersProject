@@ -22,5 +22,11 @@ input[type="submit"] {
 	font-style: italic;
 	font-size: small;
 	margin-left: 10px;
-	
+}
+
+.valid {
+	color: #008421;
+	font-style: italic;
+	font-size: small;
+	margin-left: 10px;
 }

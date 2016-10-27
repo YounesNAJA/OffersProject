@@ -9,9 +9,50 @@
 <title>Create user</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/static/css/main.css" />
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/static/script/jquery.min.js"></script>
+<script type="text/javascript">
+	function onLoad() {
+		$("#password").keyup(checkPassMatch);
+		$("#confirmpassword").keyup(checkPassMatch);
+		
+		$("#userform").submit(canSubmit);
+	}
+	
+	function canSubmit(){
+		var password = $("#password").val();
+		var confirmpassword = $("#confirmpassword").val();
+		
+		if (password != confirmpassword) {
+			alert("Passwords do not match. Please try again!")
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	function checkPassMatch() {
+		var password = $("#password").val();
+		var confirmpassword = $("#confirmpassword").val();
+
+		if (password.length >= 6 || confirmpassword.length >= 6) {
+			if (password == confirmpassword) {
+				$("#passwordmatch").text("passwords match.");
+				$("#passwordmatch").addClass("valid");
+				$("#passwordmatch").removeClass("error");
+			} else {
+				$("#passwordmatch").text("passwords do not match.");
+				$("#passwordmatch").addClass("error");
+				$("#passwordmatch").removeClass("valid");
+			}
+		}
+	}
+
+	$(document).ready(onLoad);
+</script>
 </head>
 <body>
-	<f:form action="${pageContext.request.contextPath}/createuser"
+	<f:form id="userform" action="${pageContext.request.contextPath}/createuser"
 		commandName="user" method="POST">
 		<table>
 			<tr>
@@ -35,7 +76,8 @@
 				<td class="label"><label for="confirmpassword">Confirm
 						Password: </label></td>
 				<td><input class="inputs" id="confirmpassword" type="password"
-					name="confirmpassword" /></td>
+					name="confirmpassword" />
+					<div id="passwordmatch"></div> <br /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Submit" /></td>
