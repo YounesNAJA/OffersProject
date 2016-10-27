@@ -9,7 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.joyuri.web.DAO.Offer;
 import com.joyuri.web.DAO.User;
 import com.joyuri.web.Service.UsersService;
 
@@ -39,7 +38,7 @@ public class LoginController {
 	}
 	
 	/* ===================================
-	 * After submitting a new offer's form
+	 * After submitting a new user's form
 	 ================================== */
 	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
 	public String usercreated(Model model, @Valid User user, BindingResult result){
@@ -52,10 +51,15 @@ public class LoginController {
 		
 		// If the form is validated
 		else {
-			// Adding the offer to the Database
+			// Adding the user to the Database
 			user.setAuthority("admin");
 			user.setEnabled(true);
-			usersService.create(user);
+			
+			if(usersService.exists(user.getUsername())){
+				result.rejectValue("username", "DuplicateKey.users.username", "This username already exists.");
+				return "newuser";
+			}
+			
 			return "usercreated";
 		}
 	}
