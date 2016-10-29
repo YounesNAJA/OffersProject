@@ -69,4 +69,9 @@ public class LoginController {
 			return "usercreated";
 		}
 	}
+	
+	@RequestMapping("/logout")
+	public String logout(){
+		return "logout";
+	}
 }

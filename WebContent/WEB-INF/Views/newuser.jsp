@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <html>
 <head>
@@ -15,14 +16,14 @@
 	function onLoad() {
 		$("#password").keyup(checkPassMatch);
 		$("#confirmpassword").keyup(checkPassMatch);
-		
+
 		$("#userform").submit(canSubmit);
 	}
-	
-	function canSubmit(){
+
+	function canSubmit() {
 		var password = $("#password").val();
 		var confirmpassword = $("#confirmpassword").val();
-		
+
 		if (password != confirmpassword) {
 			alert("Passwords do not match. Please try again!")
 			return false;
@@ -37,11 +38,11 @@
 
 		if (password.length >= 6 || confirmpassword.length >= 6) {
 			if (password == confirmpassword) {
-				$("#passwordmatch").text("passwords match.");
+				$("#passwordmatch").text("<fmt:message key='MatchedPasswords.user.password'></fmt:message>");
 				$("#passwordmatch").addClass("valid");
 				$("#passwordmatch").removeClass("error");
 			} else {
-				$("#passwordmatch").text("passwords do not match.");
+				$("#passwordmatch").text("<fmt:message key='UnmatchedPasswords.user.password'></fmt:message>");
 				$("#passwordmatch").addClass("error");
 				$("#passwordmatch").removeClass("valid");
 			}
@@ -52,7 +53,8 @@
 </script>
 </head>
 <body>
-	<f:form id="userform" action="${pageContext.request.contextPath}/createuser"
+	<f:form id="userform"
+		action="${pageContext.request.contextPath}/createuser"
 		commandName="user" method="POST">
 		<table>
 			<tr>

@@ -1,3 +1,6 @@
+# Compiled java classes
+*.class
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -45,4 +48,6 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+target/classes/com/joyuri/web/Service/OffersService.class
+*.class
 *.class

@@ -22,26 +22,21 @@
 	</security:authentication-manager>
 
 	<security:http use-expressions="true">
-		<security:intercept-url pattern="/newuser"
-			access="permitAll" />
-		<security:intercept-url pattern="/createuser"
-			access="permitAll" />
-		<security:intercept-url pattern="/usercreated"
-			access="permitAll" />
-		<security:intercept-url pattern="/static/**"
-			access="permitAll" />
-		<security:intercept-url pattern="/login"
-			access="permitAll" />
+		<security:intercept-url pattern="/createoffer" access="isAuthenticated()" />
+		<security:intercept-url pattern="/docreate" access="isAuthenticated()" />
+		<security:intercept-url pattern="/loggedout" access="permitAll" />
+		<security:intercept-url pattern="/logout" access="permitAll" />
+		<security:intercept-url pattern="/newuser" access="permitAll" />
+		<security:intercept-url pattern="/createuser" access="permitAll" />
+		<security:intercept-url pattern="/usercreated" access="permitAll" />
+		<security:intercept-url pattern="/static/**" access="permitAll" />
+		<security:intercept-url pattern="/login" access="permitAll" />
 		<security:intercept-url pattern="/" access="permitAll" />
-		<security:intercept-url pattern="/offers"
-			access="permitAll" />
-		<security:intercept-url pattern="/createoffer"
-			access="isAuthenticated()" />
-		<security:intercept-url pattern="/docreate"
-			access="isAuthenticated()" />
+		<security:intercept-url pattern="/offers" access="permitAll" />
 		<security:intercept-url pattern="/**" access="denyAll" />
-		<security:form-login login-page="/login"
-			authentication-failure-url="/login?error" />
+		<security:form-login login-page="/login" authentication-failure-url="/login?error" />
 		<security:csrf />
+		<security:logout logout-success-url="/login"
+			logout-url="/logout" invalidate-session="true" />
 	</security:http>
 </beans>
