@@ -1,5 +1,7 @@
 package com.joyuri.web.Controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +70,13 @@ public class LoginController {
 			
 			return "usercreated";
 		}
+	}
+	
+	@RequestMapping("/admin")
+	public String admin(Model model){
+		List<User> users = usersService.getAllUsers();
+		model.addAttribute("users", users);
+		return "admin";
 	}
 	
 	@RequestMapping("/logout")

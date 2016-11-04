@@ -24,6 +24,7 @@
 	<security:http use-expressions="true">
 		<security:intercept-url pattern="/createoffer" access="isAuthenticated()" />
 		<security:intercept-url pattern="/docreate" access="isAuthenticated()" />
+		<security:intercept-url pattern="/admin" access="hasAuthority('admin')" />
 		<security:intercept-url pattern="/loggedout" access="permitAll" />
 		<security:intercept-url pattern="/logout" access="permitAll" />
 		<security:intercept-url pattern="/newuser" access="permitAll" />

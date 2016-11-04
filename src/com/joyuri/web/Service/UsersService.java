@@ -1,5 +1,7 @@
 package com.joyuri.web.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.joyuri.web.DAO.User;
@@ -23,5 +25,9 @@ public class UsersService {
 
 	public boolean exists(String username) {
 		return userDao.exists(username);
+	}
+
+	public List<User> getAllUsers() {
+		return userDao.getAllUsers();
 	}
 }
