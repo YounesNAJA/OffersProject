@@ -3,6 +3,7 @@ package com.joyuri.web.Service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import com.joyuri.web.DAO.Offer;
@@ -27,6 +28,7 @@ public class OffersService {
 	/* ====================
 	 * Creating a new offer
 	==================== */
+	@Secured({"ROLE_ADMIN", "ROLE_USER"})
 	public boolean create(Offer offer) {
 		return offersDao.create(offer);
 	}

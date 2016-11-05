@@ -17,7 +17,7 @@
 	<p>
 		<a href="<c:url value='/createoffer' />">Add a new offers.</a>
 	</p>
-	<sec:authorize access="hasAuthority('admin')">
+	<sec:authorize access="hasAuthority('ROLE_ADMIN')">
 		<p>
 			<a href="<c:url value='/admin' />">Access to admin page.</a>
 		</p>

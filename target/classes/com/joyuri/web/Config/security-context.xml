@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
@@ -9,22 +10,21 @@
 	<security:authentication-manager>
 		<security:authentication-provider>
 			<security:user-service>
-				<security:user name="younes" authorities="admin"
+				<security:user name="younesnaja" authorities="admin"
 					password="123456" />
 			</security:user-service>
 		</security:authentication-provider>
 		<security:authentication-provider>
-			<security:jdbc-user-service
-				data-source-ref="dataSource"
-				users-by-username-query="select username,password,enabled from users where username=?"
-				authorities-by-username-query="select username,authority from authorities where username=?" />
+			<security:jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select username,password,enabled from users where binary username=?"
+				authorities-by-username-query="select username,authority from authorities where binary username=?" />
 		</security:authentication-provider>
 	</security:authentication-manager>
 
 	<security:http use-expressions="true">
 		<security:intercept-url pattern="/createoffer" access="isAuthenticated()" />
 		<security:intercept-url pattern="/docreate" access="isAuthenticated()" />
-		<security:intercept-url pattern="/admin" access="hasAuthority('admin')" />
+		<security:intercept-url pattern="/admin" access="hasAuthority('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/loggedout" access="permitAll" />
 		<security:intercept-url pattern="/logout" access="permitAll" />
 		<security:intercept-url pattern="/newuser" access="permitAll" />
@@ -41,4 +41,5 @@
 		<security:logout logout-success-url="/login"
 			logout-url="/logout" invalidate-session="true" />
 	</security:http>
+	<security:global-method-security secured-annotations="enabled"></security:global-method-security>
 </beans>
