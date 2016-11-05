@@ -39,6 +39,11 @@ public class LoginController {
 		return "usercreated";
 	}
 	
+	@RequestMapping("/denied")
+	public String showDenied(){
+		return "denied";
+	}
+	
 	/* ===================================
 	 * After submitting a new user's form
 	 ================================== */

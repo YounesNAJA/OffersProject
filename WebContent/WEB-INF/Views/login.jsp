@@ -27,6 +27,10 @@
 				<td><input type='password' name='password' id='password' /></td>
 			</tr>
 			<tr>
+				<td class="label"><label for="rememberme">Remember me :</label></td>
+				<td><input type='checkbox' name='remember-me' id='rememberme' /></td>
+			</tr>
+			<tr>
 				<td colspan='2'><input name="submit" type="submit"
 					value="Login" /></td>
 			</tr>
