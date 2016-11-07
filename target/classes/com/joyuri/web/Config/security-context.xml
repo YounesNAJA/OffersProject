@@ -19,6 +19,7 @@
 				users-by-username-query="select username,password,enabled from users where binary username=?"
 				authorities-by-username-query="select username,authority from authorities where binary username=?"
 				id="dbSourceUser" />
+			<security:password-encoder ref="PasswordEncoder"></security:password-encoder>
 		</security:authentication-provider>
 	</security:authentication-manager>
 
@@ -47,4 +48,7 @@
 			user-service-ref="dbSourceUser" />
 	</security:http>
 	<security:global-method-security secured-annotations="enabled"></security:global-method-security>
+	<bean id="PasswordEncoder"
+		class="org.springframework.security.crypto.password.StandardPasswordEncoder">
+	</bean>
 </beans>

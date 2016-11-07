@@ -59,7 +59,7 @@ public class LoginController {
 		// If the form is validated
 		else {
 			// Adding the user to the Database
-			user.setAuthority("admin");
+			user.setAuthority("ROLE_ADMIN");
 			user.setEnabled(true);
 			
 			if(usersService.exists(user.getUsername())){
